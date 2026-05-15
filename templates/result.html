@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ATS Result</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="background-glow"></div>
+
+    <div class="result-container">
+
+        <!-- TOP SECTION -->
+
+        <div class="top-section">
+
+            <!-- CIRCLE -->
+
+            <div class="circle-wrapper">
+
+                <div class="circle">
+
+                    <svg width="260" height="260">
+
+                        <circle
+                            cx="130"
+                            cy="130"
+                            r="100"
+                            stroke="#334155"
+                            stroke-width="15"
+                            fill="none"
+                        ></circle>
+
+                        <circle
+                            cx="130"
+                            cy="130"
+                            r="100"
+                            stroke="url(#GradientColor)"
+                            stroke-width="15"
+                            fill="none"
+                            stroke-linecap="round"
+                            stroke-dasharray="628"
+                            stroke-dashoffset="{{ 628 - (628 * ats_score / 100) }}"
+                        ></circle>
+
+                        <defs>
+
+                            <linearGradient id="GradientColor">
+
+                                <stop offset="0%" stop-color="#2563eb" />
+                                <stop offset="100%" stop-color="#7c3aed" />
+
+                            </linearGradient>
+
+                        </defs>
+
+                    </svg>
+
+                    <div class="inside-circle">
+                        {{ ats_score }}%
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- SCORE INFO -->
+
+            <div class="score-info">
+
+                <h2>AI ATS Resume Analysis</h2>
+
+                <div class="score-title">
+                    ATS Score: {{ ats_score }}%
+                </div>
+
+                <div class="rating">
+                    {{ rating }}
+                </div>
+
+                <!-- ACTION BUTTONS -->
+
+                <div class="action-buttons">
+
+                    <a href="/" class="action-btn">
+                        Analyze Again
+                    </a>
+
+                    <a href="/history" class="action-btn">
+                        View History
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- STATS CARDS -->
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+
+                <h3>{{ ats_score }}%</h3>
+
+                <p>ATS Score</p>
+
+            </div>
+
+            <div class="stat-card">
+
+                <h3>{{ matched_skills|length }}</h3>
+
+                <p>Matched Skills</p>
+
+            </div>
+
+            <div class="stat-card">
+
+                <h3>{{ missing_skills|length }}</h3>
+
+                <p>Missing Skills</p>
+
+            </div>
+
+        </div>
+
+        <!-- MATCHED SKILLS -->
+
+        <div class="section matched">
+
+            <h3>✅ Matched Skills</h3>
+
+            <ul>
+
+                {% for skill in matched_skills %}
+
+                    <li>{{ skill }}</li>
+
+                {% endfor %}
+
+            </ul>
+
+        </div>
+
+        <!-- MISSING SKILLS -->
+
+        <div class="section missing">
+
+            <h3>❌ Missing Skills</h3>
+
+            <ul>
+
+                {% for skill in missing_skills %}
+
+                    <li>{{ skill }}</li>
+
+                {% endfor %}
+
+            </ul>
+
+        </div>
+
+        <!-- AI SUGGESTIONS -->
+
+        <div class="section suggestions">
+
+            <h3>🤖 AI Suggestions</h3>
+
+            <ul>
+
+                {% for tip in suggestions %}
+
+                    <li>{{ tip }}</li>
+
+                {% endfor %}
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

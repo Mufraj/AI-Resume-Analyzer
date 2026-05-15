@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Resume Analyzer</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <!-- BACKGROUND GLOW -->
+
+    <div class="background-glow"></div>
+    <div class="secondary-glow"></div>
+
+    <!-- MAIN CONTAINER -->
+
+    <div class="main-container">
+
+        <!-- LEFT SECTION -->
+
+        <div class="left-section">
+
+            <!-- MINI TAG -->
+
+            <div class="mini-tag">
+                Smart AI Powered Recruitment Assistant
+            </div>
+
+            <!-- MAIN HEADING -->
+
+            <h1>
+                AI Resume Analyzer
+            </h1>
+
+            <!-- DESCRIPTION -->
+
+            <p>
+                Analyze your resume using AI-powered ATS technology.
+                Upload your CV and compare it with job requirements instantly.
+            </p>
+
+            <!-- TRUST TEXT -->
+
+            <div class="trusted-text">
+                Trusted AI Screening Experience
+            </div>
+
+            <!-- FEATURES -->
+
+            <div class="features">
+
+                <div class="feature-card">
+                    📋 ATS Score Analysis
+                </div>
+
+                <div class="feature-card">
+                    🧲 Skill Matching
+                </div>
+
+                <div class="feature-card">
+                    🧠 AI Suggestions
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT SECTION -->
+
+        <div class="upload-box">
+
+            <h2>
+                Upload Resume
+            </h2>
+
+            <form action="/analyze" method="POST" enctype="multipart/form-data">
+
+                <!-- RESUME -->
+
+                <label class="upload-label">
+                    Choose Resume PDF
+                </label>
+
+                <input
+                    type="file"
+                    name="resume"
+                    required
+                >
+
+                <!-- REQUIRED SKILLS -->
+
+                <div class="input-group">
+
+                    <label>
+                        Enter Required Skills
+                    </label>
+
+                    <textarea
+                        name="skills_input"
+                        placeholder="Example: Python, Flask, SQL, React"
+                        rows="4"
+                        required></textarea>
+
+                </div>
+
+                <!-- JOB REQUIREMENTS -->
+
+                <div class="input-group">
+
+                    <label>
+                        Enter Job Requirements
+                    </label>
+
+                    <textarea
+                        name="job_description"
+                        placeholder="Paste complete job description here..."
+                        rows="7"
+                        required></textarea>
+
+                </div>
+
+                <!-- BUTTON -->
+
+                <button type="submit">
+                    Analyze Resume
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

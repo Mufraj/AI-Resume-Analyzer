@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Resume History</title>
+
+    <style>
+
+        body{
+            background:#0f172a;
+            color:white;
+            font-family:Arial;
+            padding:40px;
+        }
+
+        h1{
+            text-align:center;
+            margin-bottom:40px;
+            color:#3b82f6;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+            background:#1e293b;
+        }
+
+        th, td{
+            padding:15px;
+            border:1px solid #334155;
+            text-align:center;
+        }
+
+        th{
+            background:#3b82f6;
+        }
+
+        tr:hover{
+            background:#334155;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Resume Analysis History</h1>
+
+    <table>
+
+        <tr>
+            <th>ID</th>
+            <th>Filename</th>
+            <th>ATS Score</th>
+            <th>Matched Skills</th>
+            <th>Missing Skills</th>
+            <th>Date</th>
+        </tr>
+
+        {% for row in results %}
+
+        <tr>
+
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}%</td>
+            <td>{{ row[3] }}</td>
+            <td>{{ row[4] }}</td>
+            <td>{{ row[5] }}</td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</body>
+
+</html>
